@@ -6,6 +6,9 @@ from keras.layers import LSTM
 from keras.layers.embeddings import Embedding
 from keras.preprocessing import sequence
 
+import time
+start_time = time.time()
+
 # fix random seed for reproducibility
 numpy.random.seed(7)
 
@@ -31,3 +34,5 @@ model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=3, batch_si
 # Final evaluation of the model
 scores = model.evaluate(X_test, y_test, verbose=0)
 print("Accuracy: %.2f%%" % (scores[1]*100))
+
+print("--- %s seconds ---" % (time.time() - start_time))
